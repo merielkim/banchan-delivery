@@ -436,7 +436,8 @@ function setStart(d) {
 function getNaverUrl(d) {
   const start = encodeURIComponent(startPoint.addr);
   const end   = encodeURIComponent(d.addr);
-  return `https://www.google.com/maps/dir/?api=1&origin=${start}&destination=${end}&travelmode=walking`;
+  // 카카오맵 앱이 있으면 앱으로, 없으면 웹으로 열림
+  return `https://map.kakao.com/?sName=${start}&eName=${end}&trans=walk`;
 }
 
 function updateProgress() {
@@ -518,7 +519,7 @@ function render() {
             </div>
           </div>` : ''}
           <div class="action-btns">
-            <a class="action-btn btn-map" href="${getNaverUrl(d)}" target="_blank">🗺 구글맵 길안내</a>
+            <a class="action-btn btn-map" href="${getNaverUrl(d)}" target="_blank">🗺 카카오맵 길안내</a>
             <a class="action-btn btn-call" href="tel:${d.phone}">📞 전화</a>
           </div>
           <div class="action-btns">
